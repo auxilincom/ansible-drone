@@ -1,0 +1,16 @@
+---
+galaxy_info:
+  author: Auxilin
+  description: Drone CI deployment with Github integration and PostgreSQL database
+  company: Auxilin
+  license: MIT
+  min_ansible_version: 2.1
+  platforms:
+  - name: Ubuntu
+    versions:
+    - trusty
+  galaxy_tags:
+    - drone
+    - ci
+    - system
+    - cloud
