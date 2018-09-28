@@ -1,8 +1,8 @@
 # Ansible Drone
 
 [![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
-[![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-drone-blue.svg?style=flat-square)](https://galaxy.ansible.com/auxilin/drone)
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](https://github.com/auxilincom/ansible-mongo/blob/master/LICENSE)
+[![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-drone-blue.svg?style=flat-square)](https://galaxy.ansible.com/auxilincom/drone)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](https://github.com/auxilincom/ansible-drone/blob/master/LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
 
@@ -56,7 +56,7 @@ Example of the playbook file:
   become_user: root
   become: true
   roles:
-    - role: auxilin.drone
+    - role: auxilincom.drone
       # Version of Drone CI, see other versions here: https://hub.docker.com/r/drone/drone/tags/
       drone_version: latest
 

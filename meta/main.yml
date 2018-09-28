@@ -1,5 +1,6 @@
 ---
 galaxy_info:
+  role_name: drone
   author: Auxilin
   description: Drone CI deployment with Github integration and PostgreSQL database
   company: Auxilin
