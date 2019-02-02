@@ -1,7 +1,7 @@
 - name: run drone server
   docker_container:
     name: drone-server
-    image: "drone/drone:{{drone_version}}"
+    image: "drone/drone:{{ drone_version }}"
     state: started
     restart_policy: always
     ports:
@@ -12,18 +12,18 @@
     links:
       - postgres
     env:
-      DRONE_HOST: "{{drone_host}}"
+      DRONE_HOST: "{{ drone_host }}"
       DRONE_SERVER_ADDR: ":8000"
       DRONE_DEBUG: "true"
-      DRONE_SECRET: "{{drone_secret}}"
+      DRONE_SECRET: "{{ drone_secret }}"
       DRONE_DATABASE_DRIVER: postgres
-      DRONE_DATABASE_DATASOURCE: postgres://{{drone_postgress_user}}:{{drone_postgress_password}}@postgres:5432/{{drone_postgress_db}}?sslmode=disable
+      DRONE_DATABASE_DATASOURCE: postgres://{{ drone_postgress_user }}:{{ drone_postgress_password }}@postgres:5432/{{ drone_postgress_db }}?sslmode=disable
       DRONE_OPEN: "false"
-      DRONE_ADMIN: "{{drone_admins}}"
+      DRONE_ADMIN: "{{ drone_admins }}"
       DRONE_ADMIN_ALL: "false"
       DRONE_GITHUB: "true"
-      DRONE_GITHUB_CLIENT: "{{drone_github_client}}"
-      DRONE_GITHUB_SECRET: "{{drone_github_secret}}"
+      DRONE_GITHUB_CLIENT: "{{ drone_github_client }}"
+      DRONE_GITHUB_SECRET: "{{ drone_github_secret }}"
       DRONE_GITHUB_SKIP_VERIFY: "true"
       DRONE_GITHUB_CONTEXT: "continuous-integration/drone"
   tags:
@@ -32,8 +32,8 @@
 
 - name: run drone agent
   docker_container:
-    name: "agent-{{item.name}}"
-    image: "drone/agent:{{drone_version}}"
+    name: "agent-{{ item.name }}"
+    image: "drone/agent:{{ drone_version }}"
     privileged: yes
     state: started
     restart_policy: always
@@ -44,8 +44,8 @@
     env:
       DRONE_SERVER: "drone-server:9000"
       DRONE_DEBUG: "true"
-      DRONE_SECRET: "{{drone_secret}}"
-  with_items: "{{drone_agents}}"
+      DRONE_SECRET: "{{ drone_secret }}"
+  with_items: "{{ drone_agents }}"
   tags:
     - drone
     - agent
