@@ -1,6 +1,6 @@
 {
   "name": "ansible-drone",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "An ansible role for the drone ci",
   "repository": {
     "type": "git",
@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/auxilincom/ansible-drone#readme",
   "devDependencies": {
-    "all-contributors-cli": "5.4.0"
+    "all-contributors-cli": "5.11.0"
   }
 }

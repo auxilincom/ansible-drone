@@ -1,7 +1,7 @@
 - name: start postgres for drone ci
   docker_container:
     name: postgres
-    image: postgres:10.5
+    image: postgres:11.1
     state: started
     restart_policy: always
     ports:
