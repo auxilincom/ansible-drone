@@ -1,16 +1,36 @@
 - name: start postgres for drone ci
+  when: not use_remote_postgres
   docker_container:
     name: postgres
-    image: postgres:11.1
+    image: postgres:{{ drone_postgres_version }}
     state: started
     restart_policy: always
     ports:
       - "5432:5432"
     volumes:
       - "{{ drone_postgress_data_dir }}:/var/lib/postgresql/data"
+    networks:
+      - name: "{{ drone_network_name }}"
     env:
       POSTGRES_PASSWORD: "{{ drone_postgress_password }}"
       POSTGRES_USER: "{{ drone_postgress_user }}"
-      POSTGRES_DB: "{{ drone_postgress_db }}"
   tags:
     - postgres
+
+- name: Make sure psycopg2 is installed
+  become: yes
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - 'python3-psycopg2'
+    - 'python-psycopg2'
+
+- name: create postgres database
+  postgresql_db:
+    login_host: "{{ drone_postgres_host }}"
+    login_password: "{{ drone_postgress_password }}"
+    login_user: "{{ drone_postgress_user }}"
+    name: "{{ drone_postgress_db }}"
+    port: "{{ drone_postgres_port }}"
+
