@@ -24,8 +24,6 @@
       DRONE_DATABASE_DATASOURCE: postgres://{{ drone_postgress_user }}:{{ drone_postgress_password }}@postgres:5432/{{ drone_postgress_db }}?sslmode=disable
 
       DRONE_USER_FILTER: "{{ drone_user_filter }}"
-      DRONE_ADMIN: "{{ drone_admins }}"
-      DRONE_ADMIN_ALL: "false"
       DRONE_GITHUB_SERVER: "https://github.com"
       DRONE_GITHUB_CLIENT_ID: "{{ drone_github_client_id }}"
       DRONE_GITHUB_CLIENT_SECRET: "{{ drone_github_client_secret }}"
