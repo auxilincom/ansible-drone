@@ -12,7 +12,7 @@
     links:
       - postgres
     env:
-      DRONE_SERVER_HOST: "{{ drone_host }}"
+      DRONE_SERVER_HOST: "{{ drone_server_host }}"
       DRONE_SERVER_PORT: "{{ drone_server_port }}"
       DRONE_SERVER_PROTO: "{{ drone_server_proto }}"
       DRONE_LOGS_DEBUG: "{{ drone_logs_debug }}"
