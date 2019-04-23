@@ -62,19 +62,20 @@ Example of the playbook file:
   roles:
     - role: auxilincom.drone
       # Version of Drone CI, see other versions here: https://hub.docker.com/r/drone/drone/tags/
-      drone_version: latest
+      drone_version: 1
 
       # the url, where drone instance will be publicly available
       # typically you would have nginx in front of Drone CI
-      drone_host: http://178.62.116.103
+      drone_server_host: 78.62.116.103
 
       # Drone secret key, used for private communication between agent and web UI
       # more info: http://docs.drone.io/install-for-github/
-      drone_secret: hTirsXmrY4YsyK79ELgB
+      drone_rpc_secret: hTirsXmrY4YsyK79ELgB
 
       # Github oauth application client identifier and secret, more info http://docs.drone.io/install-for-github/
-      drone_github_client:
-      drone_github_secret:
+      drone_github_client_id:
+      drone_github_client_secret:
+      drone_user_filter: auxilin
 
       # A password to postgress db used by drone
       drone_postgress_password: droneRocks23@p

@@ -5,25 +5,31 @@
     state: started
     restart_policy: always
     ports:
-      - "8000:8000"
-      - "9000:9000"
+      - "{{ drone_server_port }}:{{ drone_server_port }}"
     volumes:
       - /drone:/var/lib/drone/
+      - /var/run/docker.sock:/var/run/docker.sock
     links:
       - postgres
     env:
-      DRONE_HOST: "{{ drone_host }}"
-      DRONE_SERVER_ADDR: ":8000"
-      DRONE_DEBUG: "true"
-      DRONE_SECRET: "{{ drone_secret }}"
+      DRONE_SERVER_HOST: "{{ drone_host }}"
+      DRONE_SERVER_PORT: "{{ drone_server_port }}"
+      DRONE_SERVER_PROTO: "{{ drone_server_proto }}"
+      DRONE_LOGS_DEBUG: "{{ drone_logs_debug }}"
+      DRONE_RPC_SECRET: "{{ drone_rpc_secret }}"
+      DRONE_TLS_AUTOCERT: "{{ drone_tls_autcert }}"
+      DRONE_COOKIE_SECRET: "{{ drone_cookie_secret }}"
+      DRONE_COOKIE_TIMEOUT: "{{ drone_cookie_timeout }}"
+
       DRONE_DATABASE_DRIVER: postgres
       DRONE_DATABASE_DATASOURCE: postgres://{{ drone_postgress_user }}:{{ drone_postgress_password }}@postgres:5432/{{ drone_postgress_db }}?sslmode=disable
-      DRONE_OPEN: "false"
+
+      DRONE_USER_FILTER: "{{ drone_user_filter }}"
       DRONE_ADMIN: "{{ drone_admins }}"
       DRONE_ADMIN_ALL: "false"
-      DRONE_GITHUB: "true"
-      DRONE_GITHUB_CLIENT: "{{ drone_github_client }}"
-      DRONE_GITHUB_SECRET: "{{ drone_github_secret }}"
+      DRONE_GITHUB_SERVER: "https://github.com"
+      DRONE_GITHUB_CLIENT_ID: "{{ drone_github_client_id }}"
+      DRONE_GITHUB_CLIENT_SECRET: "{{ drone_github_client_secret }}"
       DRONE_GITHUB_SKIP_VERIFY: "true"
       DRONE_GITHUB_CONTEXT: "continuous-integration/drone"
   tags:
@@ -42,10 +48,12 @@
     links:
       - drone-server
     env:
-      DRONE_SERVER: "drone-server:9000"
-      DRONE_DEBUG: "true"
-      DRONE_SECRET: "{{ drone_secret }}"
-  with_items: "{{ drone_agents }}"
+      DRONE_RPC_SERVER: " {{ drone_rpc_server }}"
+      DRONE_RUNNER_NAME: "{{ item.name }}"
+      DRONE_LOGS_DEBUG: "{{ drone_logs_debug }}"
+      DRONE_RPC_SECRET: "{{ drone_secret }}"
+      DRONE_RUNNER_CAPACITY: "{{drone_runner_capacity}}"
+  with_items: "{{ drone_runners }}"
   tags:
     - drone
     - agent
