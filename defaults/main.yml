@@ -13,12 +13,12 @@ drone_rpc_server: "http://drone-server:8000"
 
 # the url, where drone instance will be publicly available
 # typically you would have nginx in front of Drone CI
-drone_server_host:
-drone_server_port: 8000
-drone_server_proto: http
-drone_tls_autcert: false
-drone_logs_debug: true
-drone_cookie_secret:
+drone_server_host: ""
+drone_server_port: "8000"
+drone_server_proto: "http"
+drone_tls_autcert: "false"
+drone_logs_debug: "true"
+drone_cookie_secret: ""
 drone_cookie_timeout: 72h
 
 # Drone secret key, used for private communication between agent and web UI
