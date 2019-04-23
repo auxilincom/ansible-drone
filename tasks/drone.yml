@@ -5,8 +5,7 @@
     state: started
     restart_policy: always
     ports:
-      - "{{ drone_server_port }}:{{ drone_server_port }}"
-      - "8001:80"
+      - "8000:80"
     volumes:
       - /drone:/var/lib/drone/
       - /var/run/docker.sock:/var/run/docker.sock
@@ -14,7 +13,6 @@
       - postgres
     env:
       DRONE_SERVER_HOST: "{{ drone_server_host }}"
-      DRONE_SERVER_PORT: "{{ drone_server_port }}"
       DRONE_SERVER_PROTO: "{{ drone_server_proto }}"
       DRONE_LOGS_DEBUG: "{{ drone_logs_debug }}"
       DRONE_RPC_SECRET: "{{ drone_rpc_secret }}"
