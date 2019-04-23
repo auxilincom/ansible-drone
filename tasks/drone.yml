@@ -6,6 +6,7 @@
     restart_policy: always
     ports:
       - "{{ drone_server_port }}:{{ drone_server_port }}"
+      - "8001:80"
     volumes:
       - /drone:/var/lib/drone/
       - /var/run/docker.sock:/var/run/docker.sock
