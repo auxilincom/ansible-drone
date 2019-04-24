@@ -3,8 +3,6 @@
     name: drone-server
     image: "drone/drone:{{ drone_version }}"
     state: started
-    # Restart container to apply any env changes
-    restart: yes
     restart_policy: always
     ports:
       - "8000:80"
