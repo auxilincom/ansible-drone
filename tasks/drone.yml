@@ -19,6 +19,7 @@
       DRONE_TLS_AUTOCERT: "{{ drone_tls_autcert }}"
       DRONE_COOKIE_SECRET: "{{ drone_cookie_secret }}"
       DRONE_COOKIE_TIMEOUT: "{{ drone_cookie_timeout }}"
+      DRONE_USER_CREATE: "{{ drone_user_create }}"
 
       DRONE_DATABASE_DRIVER: postgres
       DRONE_DATABASE_DATASOURCE: postgres://{{ drone_postgress_user }}:{{ drone_postgress_password }}@postgres:5432/{{ drone_postgress_db }}?sslmode=disable

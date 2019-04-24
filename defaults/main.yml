@@ -19,6 +19,8 @@ drone_tls_autcert: "false"
 drone_logs_debug: "true"
 drone_cookie_secret: ""
 drone_cookie_timeout: 72h
+# use this to create first admin for the drone server, read more: https://docs.drone.io/administration/user/admins/
+drone_user_create:
 
 # Drone secret key, used for private communication between agent and web UI
 # more info: http://docs.drone.io/install-for-github/
