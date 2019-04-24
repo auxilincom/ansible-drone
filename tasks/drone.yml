@@ -33,6 +33,8 @@
   tags:
     - drone
     - server
+  when: 
+    - ansible_drone_deploy_server
 
 - name: run drone agent
   docker_container:
@@ -55,3 +57,5 @@
   tags:
     - drone
     - agent
+  when: 
+    - ansible_drone_deploy_agents

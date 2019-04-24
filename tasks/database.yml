@@ -14,3 +14,5 @@
       POSTGRES_DB: "{{ drone_postgress_db }}"
   tags:
     - postgres
+  when: 
+    - ansible_drone_deploy_postgress
