@@ -9,7 +9,8 @@ drone_user_filter: ""
 # Name of the docker agent container, you can add more than one agent
 drone_runners: [{name: "Nancy"}]
 drone_runner_capacity: "2"
-drone_rpc_server: "http://drone-server:80"
+# Url to your instance with drone admin, e.x.: https://drone.org.com
+drone_rpc_server: 
 
 # the url, where drone instance will be publicly available
 # typically you would have nginx in front of Drone CI
