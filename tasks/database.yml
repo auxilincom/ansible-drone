@@ -15,4 +15,4 @@
   tags:
     - postgres
   when: 
-    - ansible_drone_deploy_postgress
+    - ansible_drone_deploy_postgresql
