@@ -3,12 +3,13 @@
 # Version of Drone CI, see other versions here: https://hub.docker.com/r/drone/drone/tags/
 drone_version: 1
 
-# List of users with admins or orgnizations, who has access to the instance: https://docs.drone.io/reference/server/drone-user-filter/
+# List of users with admins or orgnizations, who has access to the instance:
+# https://docs.drone.io/reference/server/drone-user-filter/
 drone_user_filter: ""
 
 # Name of the docker agent container, you can add more than one agent
 drone_runners: [{name: "Nancy"}]
-drone_runner_capacity: "2"
+drone_runner_capacity: 2
 # Url to your instance with drone admin, e.x.: https://drone.org.com
 drone_rpc_server: 
 
@@ -16,21 +17,33 @@ drone_rpc_server:
 # typically you would have nginx in front of Drone CI
 drone_server_host: ""
 drone_server_proto: "http"
-drone_tls_autcert: "false"
+drone_tls_autcert: false
 drone_logs_debug: "true"
 drone_cookie_secret: ""
 drone_cookie_timeout: 72h
-# use this to create first admin for the drone server, read more: https://docs.drone.io/administration/user/admins/
+# use this to create first admin for the drone server
+# read more: https://docs.drone.io/administration/user/admins/
 drone_user_create:
 
 # Drone secret key, used for private communication between agent and web UI
-# more info: http://docs.drone.io/install-for-github/
+# more info: https://docs.drone.io/reference/server/drone-rpc-secret/
 drone_rpc_secret: hTirsXmrY4YsyK79ELgB
 
-# Github oauth application client identifier, more info http://docs.drone.io/install-for-github/
+# Github oauth application client identifier
+# more info https://docs.drone.io/installation/github/single-machine
 drone_github_client_id:
-# Github oauth application client secret, more info http://docs.drone.io/install-for-github/
+# Github oauth application client secret
+# more info https://docs.drone.io/installation/github/single-machine/
 drone_github_client_secret:
+# Boolean value configures Drone to authenticate when cloning public repositories
+# more info https://docs.drone.io/installation/github/single-machine/
+drone_git_always_auth: false
+# A string containing your GitHub server address
+drone_github_server: https://github.com
+
+# Drone supports aesgcm encryption of secrets stored in the database.
+# details https://docs.drone.io/administration/server/database/
+drone_database_secret:
 
 # A password to postgress db used by drone
 drone_postgress_password: droneRocks23@p
