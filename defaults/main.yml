@@ -7,6 +7,10 @@ drone_version: 1
 # https://docs.drone.io/reference/server/drone-user-filter/
 drone_user_filter: ""
 
+# use this to create first admin for the drone server
+# read more: https://docs.drone.io/administration/user/admins/
+drone_user_create:
+
 # Name of the docker agent container, you can add more than one agent
 drone_runners: [{name: "Nancy"}]
 drone_runner_capacity: 2
@@ -18,12 +22,11 @@ drone_rpc_server:
 drone_server_host: ""
 drone_server_proto: "http"
 drone_tls_autcert: false
+drone_logs_debug: false
+drone_logs_trace: false
 drone_logs_debug: "true"
 drone_cookie_secret: ""
 drone_cookie_timeout: 72h
-# use this to create first admin for the drone server
-# read more: https://docs.drone.io/administration/user/admins/
-drone_user_create:
 
 # Drone secret key, used for private communication between agent and web UI
 # more info: https://docs.drone.io/reference/server/drone-rpc-secret/

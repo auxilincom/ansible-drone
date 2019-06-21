@@ -25,9 +25,10 @@
       DRONE_GITHUB_SKIP_VERIFY: "true"
       
       DRONE_LOGS_DEBUG: "{{ drone_logs_debug }}"
+      DRONE_LOGS_TRACE: "{{ drone_logs_trace }}"
       
+      DRONE_AGENTS_ENABLED: true
       DRONE_RPC_SECRET: "{{ drone_rpc_secret }}"
-      DRONE_RPC_SERVER: " {{ drone_rpc_server }}"
       
       DRONE_SERVER_HOST: "{{ drone_server_host }}"
       DRONE_SERVER_PROTO: "{{ drone_server_proto }}"
@@ -53,8 +54,9 @@
       - /var/run/docker.sock:/var/run/docker.sock
     env:
       DRONE_LOGS_DEBUG: "{{ drone_logs_debug }}"
+      DRONE_LOGS_TRACE: "{{ drone_logs_trace }}"
       DRONE_RPC_SECRET: "{{ drone_rpc_secret }}"
-      DRONE_RPC_SERVER: " {{ drone_rpc_server }}"
+      DRONE_RPC_SERVER: "{{ drone_rpc_server }}"
       DRONE_RUNNER_CAPACITY: "{{ drone_runner_capacity }}"
       DRONE_RUNNER_NAME: "{{ item.name }}"
   with_items: "{{ drone_runners }}"

@@ -22,8 +22,9 @@ Available variables:
 
 |Name|Default|Description|
 |:--:|:--:|:----------|
-|**`drone_version`**|`latest`|Version of Drone CI, see other versions [here](https://hub.docker.com/r/drone/drone/tags)|
-|**`drone_admins`**|`""`|List of users with admin access to the drone, readme [more]( http://docs.drone.io/user-management)|
+|**`drone_version`**|`1`|Version of Drone CI, see other versions [here](https://hub.docker.com/r/drone/drone/tags)|
+|**`drone_user_filter`**|`""`|Comma-separated list of accounts. Registration is limited to users included in this list, or users that are members of organizations included in this list.|
+|**`drone_user_create`**|`""`|List of users with admin access to the drone, readme [more](https://docs.drone.io/administration/user/admins)|
 |**`drone_agents`**|`[{name: "Nancy"}]`|Name of the docker agent container, you can add more than one agent|
 |**`drone_host`**|`""`|The url, where drone instance will be publicly available. Typically you would have nginx in front of Drone CI|
 |**`drone_secret`**|`hTirsXmrY4YsyK79ELgB`|Drone secret key, used for private communication between agent and web UI [more info](http://docs.drone.io/install-for-github)|
