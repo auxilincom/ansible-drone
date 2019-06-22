@@ -33,7 +33,7 @@
       DRONE_SERVER_HOST: "{{ drone_server_host }}"
       DRONE_SERVER_PROTO: "{{ drone_server_proto }}"
 
-      DRONE_TLS_AUTOCERT: "{{ drone_tls_autcert }}"
+      DRONE_TLS_AUTOCERT: "{{ drone_tls_autocert }}"
 
       DRONE_USER_CREATE: "{{ drone_user_create }}"
       DRONE_USER_FILTER: "{{ drone_user_filter }}"

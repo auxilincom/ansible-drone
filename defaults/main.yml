@@ -16,21 +16,19 @@ drone_runners: [{name: "Nancy"}]
 drone_runner_capacity: 2
 # Url to your instance with drone admin, e.x.: https://drone.org.com
 drone_rpc_server: 
+# Drone secret key, used for private communication between agent and web UI
+# more info: https://docs.drone.io/reference/server/drone-rpc-secret/
+drone_rpc_secret: hTirsXmrY4YsyK79ELgB
 
 # the url, where drone instance will be publicly available
 # typically you would have nginx in front of Drone CI
 drone_server_host: ""
 drone_server_proto: "http"
-drone_tls_autcert: false
+drone_tls_autocert: false
 drone_logs_debug: false
 drone_logs_trace: false
-drone_logs_debug: "true"
 drone_cookie_secret: ""
 drone_cookie_timeout: 72h
-
-# Drone secret key, used for private communication between agent and web UI
-# more info: https://docs.drone.io/reference/server/drone-rpc-secret/
-drone_rpc_secret: hTirsXmrY4YsyK79ELgB
 
 # Github oauth application client identifier
 # more info https://docs.drone.io/installation/github/single-machine

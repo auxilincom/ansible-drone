@@ -25,9 +25,15 @@ Available variables:
 |**`drone_version`**|`1`|Version of Drone CI, see other versions [here](https://hub.docker.com/r/drone/drone/tags)|
 |**`drone_user_filter`**|`""`|Comma-separated list of accounts. Registration is limited to users included in this list, or users that are members of organizations included in this list.|
 |**`drone_user_create`**|`""`|List of users with admin access to the drone, readme [more](https://docs.drone.io/administration/user/admins)|
-|**`drone_agents`**|`[{name: "Nancy"}]`|Name of the docker agent container, you can add more than one agent|
-|**`drone_host`**|`""`|The url, where drone instance will be publicly available. Typically you would have nginx in front of Drone CI|
-|**`drone_secret`**|`hTirsXmrY4YsyK79ELgB`|Drone secret key, used for private communication between agent and web UI [more info](http://docs.drone.io/install-for-github)|
+|**`drone_runners`**|`[{name: "Nancy"}]`|Name of the docker agent container, you can add more than one agent|
+|**`drone_runner_capacity`**|`""`|Unsigned integer value configures the number of concurrent pipelines an agent can execute. Concurrency is disabled if this value is not set.|
+|**`drone_rpc_server`**|`""`|The url, where drone instance will be publicly available. Typically you would have nginx in front of Drone CI. Example: https://ci.auxilin.com|
+|**`drone_rpc_secret`**|`hTirsXmrY4YsyK79ELgB`|Required string literal value provides the drone shared secret. This is used to authenticate the rpc connection to the server. The server and agent must be provided the same secret value, [more info](https://docs.drone.io/reference/server/drone-rpc-secret)|
+|**`drone_server_host`**|`""`|Required string literal value specifies the Drone server hostname. Example: ci.auxilin.com|
+|**`drone_server_proto`**|`http`|Required string literal value specifies the Drone server protocol.|
+|**`drone_tls_autocert`**|`false`|Automatically generates an SSL certificate using Lets Encrypt, and configures the server to accept HTTPS requests.|
+|**`drone_logs_debug`**|`false`|Enable debug-level logging.|
+|**`drone_logs_trace`**|`false`|Enable trace logs.|
 |**`drone_github_client`**|`""`|Github oauth application client identifier, [more info](http://docs.drone.io/install-for-github)|
 |**`drone_github_secret`**|`""`|Github oauth application client secret, [more info]( http://docs.drone.io/install-for-github)|
 |**`drone_postgress_password`**|`droneRocks23@p`|A password to postgress db used by drone|
