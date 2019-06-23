@@ -22,18 +22,32 @@ Available variables:
 
 |Name|Default|Description|
 |:--:|:--:|:----------|
-|**`drone_version`**|`latest`|Version of Drone CI, see other versions [here](https://hub.docker.com/r/drone/drone/tags)|
-|**`drone_admins`**|`""`|List of users with admin access to the drone, readme [more]( http://docs.drone.io/user-management)|
-|**`drone_agents`**|`[{name: "Nancy"}]`|Name of the docker agent container, you can add more than one agent|
-|**`drone_host`**|`""`|The url, where drone instance will be publicly available. Typically you would have nginx in front of Drone CI|
-|**`drone_secret`**|`hTirsXmrY4YsyK79ELgB`|Drone secret key, used for private communication between agent and web UI [more info](http://docs.drone.io/install-for-github)|
-|**`drone_github_client`**|`""`|Github oauth application client identifier, [more info](http://docs.drone.io/install-for-github)|
-|**`drone_github_secret`**|`""`|Github oauth application client secret, [more info]( http://docs.drone.io/install-for-github)|
+|**`drone_version`**|`1`|Version of Drone CI, see other versions [here](https://hub.docker.com/r/drone/drone/tags)|
+|**`drone_user_filter`**|`""`|Comma-separated list of accounts. Registration is limited to users included in this list, or users that are members of organizations included in this list.|
+|**`drone_user_create`**|`""`|List of users with admin access to the drone, readme [more](https://docs.drone.io/administration/user/admins)|
+|**`drone_runners`**|`[{name: "Nancy"}]`|Name of the docker agent container, you can add more than one agent|
+|**`drone_runner_capacity`**|`""`|Unsigned integer value configures the number of concurrent pipelines an agent can execute. Concurrency is disabled if this value is not set.|
+|**`drone_rpc_server`**|`""`|The url, where drone instance will be publicly available. Typically you would have nginx in front of Drone CI. Example: https://ci.auxilin.com|
+|**`drone_rpc_secret`**|`hTirsXmrY4YsyK79ELgB`|Required string literal value provides the drone shared secret. This is used to authenticate the rpc connection to the server. The server and agent must be provided the same secret value, [more info](https://docs.drone.io/reference/server/drone-rpc-secret)|
+|**`drone_server_host`**|`""`|Required string literal value specifies the Drone server hostname. Example: ci.auxilin.com|
+|**`drone_server_proto`**|`http`|Required string literal value specifies the Drone server protocol.|
+|**`drone_tls_autocert`**|`false`|Automatically generates an SSL certificate using Lets Encrypt, and configures the server to accept HTTPS requests.|
+|**`drone_logs_debug`**|`false`|Enable debug-level logging.|
+|**`drone_logs_trace`**|`false`|Enable trace logs.|
+|**`drone_cookie_secret`**|`""`|A secret key used to sign authentication cookies. This value is optional. If unset, a random value is generated each time the server is started.|
+|**`drone_cookie_timeout`**|`72h`|Duration value sets the authentication cookie expiration.|
+|**`drone_github_client_id`**|`""`|Github oauth application client identifier, [more info](https://docs.drone.io/installation/github/multi-machine)|
+|**`drone_github_secret`**|`""`|Github oauth application client secret, [more info](https://docs.drone.io/installation/github/multi-machine)|
+|**`drone_git_always_auth`**|`false`|Boolean value configures Drone to authenticate when cloning public repositories. This is only required when your source code management system (e.g. GitHub Enterprise) has private mode enabled.|
+|**`drone_github_server`**|`https://github.com`|String literal value provides the github server address.|
+|**`drone_database_secret`**|`""`|Drone supports aesgcm encryption of secrets stored in the database. You must enable encryption before any secrets are stored in the database, [read more](https://docs.drone.io/install/server/storage/encryption)|
 |**`drone_postgress_password`**|`droneRocks23@p`|A password to postgress db used by drone|
-|**`drone_postgress_user`**|`drone`|A username to postgress db used by drone, [read more](http://docs.drone.io/database-settings)|
-|**`drone_postgress_db`**|`drone`|A name of to postgress db used by drone, [read more](http://docs.drone.io/database-settings)|
+|**`drone_postgress_user`**|`drone`|A username to postgress db used by drone, [read more](https://docs.drone.io/install/server/storage/postgres/)|
+|**`drone_postgress_db`**|`drone`|A name of to postgress db used by drone, [read more](https://docs.drone.io/install/server/storage/postgres/)|
 |**`drone_postgress_data_dir`**|`/drone-postgres-data`|A directory on a host machine, where postgresql data stored|
-|**`nginx_drone_internal_host`**|`http://localhost:8000`|Internal drone ui http url used by nginx to proxy traffic. For example: http://localhost:8000|
+|**`ansible_drone_deploy_agents`**|`true`|The boolean value indicates whether start deploy of the `drone` agents or not.|
+|**`ansible_drone_deploy_server`**|`true`|The boolean value indicates whether start deploy of the `drone` server or not.|
+|**`ansible_drone_deploy_postgresql`**|`true`|The boolean value indicates whether start deploy of the `postgres` database or not.|
 
 ## Dependencies
 
@@ -62,25 +76,47 @@ Example of the playbook file:
   roles:
     - role: auxilincom.drone
       # Version of Drone CI, see other versions here: https://hub.docker.com/r/drone/drone/tags/
-      drone_version: latest
+      drone_version: 1
+
+      # List of users with admins or orgnizations, who has access to the instance:
+      # https://docs.drone.io/reference/server/drone-user-filter/
+      drone_user_filter: "auxilincom"
+
+      # use this to create first admin for the drone server
+      # read more: https://docs.drone.io/administration/user/admins/
+      drone_user_create: "ezhivitsa,anorsich"
+
+      # Name of the docker agent container, you can add more than one agent
+      drone_runners: [{name: "Nancy"}]
+      drone_runner_capacity: 2
+      # Url to your instance with drone admin, e.x.: https://drone.org.com
+      drone_rpc_server: https://ci.auxilin.com
+      # Drone secret key, used for private communication between agent and web UI
+      # more info: https://docs.drone.io/reference/server/drone-rpc-secret/
+      drone_rpc_secret: hTirsXmrY4YsyK79ELgB
 
       # the url, where drone instance will be publicly available
       # typically you would have nginx in front of Drone CI
-      drone_host: http://178.62.116.103
+      drone_server_host: "ci.auxilin.com"
+      drone_server_proto: "https"
+      drone_cookie_secret: "cookie-secret"
 
-      # Drone secret key, used for private communication between agent and web UI
-      # more info: http://docs.drone.io/install-for-github/
-      drone_secret: hTirsXmrY4YsyK79ELgB
+      # Github oauth application client identifier
+      # more info https://docs.drone.io/installation/github/multi-machine
+      drone_github_client_id:
+      # Github oauth application client secret
+      # more info https://docs.drone.io/installation/github/multi-machine
+      drone_github_client_secret:
 
-      # Github oauth application client identifier and secret, more info http://docs.drone.io/install-for-github/
-      drone_github_client:
-      drone_github_secret:
+      # Drone supports aesgcm encryption of secrets stored in the database.
+      # details https://docs.drone.io/administration/server/database/
+      drone_database_secret: "0c549fd39ae397333761d2cb0c53c219"
 
       # A password to postgress db used by drone
       drone_postgress_password: droneRocks23@p
-      # A username to postgress db used by drone, read more: http://docs.drone.io/database-settings/
+      # A username to postgress db used by drone, read more: https://docs.drone.io/install/server/storage/postgres/
       drone_postgress_user: drone
-      # A name of to postgress db used by drone, read more: http://docs.drone.io/database-settings/
+      # A name of to postgress db used by drone, read more: https://docs.drone.io/install/server/storage/postgres/
       drone_postgress_db: drone
       # a directory on a host machine, where postgresql data stored
       drone_postgress_data_dir: /drone-postgres-data

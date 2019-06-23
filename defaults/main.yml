@@ -1,33 +1,60 @@
-# Version of Drone CI, see other versions here: https://hub.docker.com/r/drone/drone/tags/
-drone_version: latest
+# Detailed reference: https://docs.drone.io/reference/
 
-# List of users with admin access to the drone, readme more: http://docs.drone.io/user-management/
-drone_admins: ""
+# Version of Drone CI, see other versions here: https://hub.docker.com/r/drone/drone/tags/
+drone_version: 1
+
+# List of users with admins or orgnizations, who has access to the instance:
+# https://docs.drone.io/reference/server/drone-user-filter/
+drone_user_filter: ""
+
+# use this to create first admin for the drone server
+# read more: https://docs.drone.io/administration/user/admins/
+drone_user_create:
 
 # Name of the docker agent container, you can add more than one agent
-drone_agents: [{name: "Nancy"}]
+drone_runners: [{name: "Nancy"}]
+drone_runner_capacity: 2
+# Url to your instance with drone admin, e.x.: https://drone.org.com
+drone_rpc_server: 
+# Drone secret key, used for private communication between agent and web UI
+# more info: https://docs.drone.io/reference/server/drone-rpc-secret/
+drone_rpc_secret: hTirsXmrY4YsyK79ELgB
 
 # the url, where drone instance will be publicly available
 # typically you would have nginx in front of Drone CI
-drone_host:
+drone_server_host: ""
+drone_server_proto: "http"
+drone_tls_autocert: false
+drone_logs_debug: false
+drone_logs_trace: false
+drone_cookie_secret: ""
+drone_cookie_timeout: 72h
 
-# Drone secret key, used for private communication between agent and web UI
-# more info: http://docs.drone.io/install-for-github/
-drone_secret: hTirsXmrY4YsyK79ELgB
+# Github oauth application client identifier
+# more info https://docs.drone.io/installation/github/multi-machine
+drone_github_client_id:
+# Github oauth application client secret
+# more info https://docs.drone.io/installation/github/multi-machine
+drone_github_client_secret:
+# Boolean value configures Drone to authenticate when cloning public repositories
+# more info https://docs.drone.io/installation/github/multi-machine
+drone_git_always_auth: false
+# A string containing your GitHub server address
+drone_github_server: https://github.com
 
-# Github oauth application client identifier, more info http://docs.drone.io/install-for-github/
-drone_github_client:
-# Github oauth application client secret, more info http://docs.drone.io/install-for-github/
-drone_github_secret:
+# Drone supports aesgcm encryption of secrets stored in the database.
+# details https://docs.drone.io/administration/server/database/
+drone_database_secret:
 
 # A password to postgress db used by drone
 drone_postgress_password: droneRocks23@p
-# A username to postgress db used by drone, read more: http://docs.drone.io/database-settings/
+# A username to postgress db used by drone, read more: https://docs.drone.io/install/server/storage/postgres/
 drone_postgress_user: drone
-# A name of to postgress db used by drone, read more: http://docs.drone.io/database-settings/
+# A name of to postgress db used by drone, read more: https://docs.drone.io/install/server/storage/postgres/
 drone_postgress_db: drone
 # a directory on a host machine, where postgresql data stored
 drone_postgress_data_dir: /drone-postgres-data
 
-# Internal drone ui http url used by nginx to proxy traffic. For example: http://localhost:8000
-nginx_drone_internal_host: http://localhost:8000
+ansible_drone_deploy_agents: true
+ansible_drone_deploy_server: true
+ansible_drone_deploy_postgresql: true

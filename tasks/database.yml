@@ -1,7 +1,7 @@
 - name: start postgres for drone ci
   docker_container:
     name: postgres
-    image: postgres:11.1
+    image: postgres:11.3
     state: started
     restart_policy: always
     ports:
@@ -14,3 +14,5 @@
       POSTGRES_DB: "{{ drone_postgress_db }}"
   tags:
     - postgres
+  when: 
+    - ansible_drone_deploy_postgresql
