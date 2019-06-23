@@ -1,3 +1,7 @@
+## v0.3.0 (2019-06-23)
+
+* Update configuration to use the latest postgres and drone
+
 ## v0.2.1 (2019-02-02)
 
 * Fix ansible variable usages
