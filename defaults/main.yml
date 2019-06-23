@@ -31,13 +31,13 @@ drone_cookie_secret: ""
 drone_cookie_timeout: 72h
 
 # Github oauth application client identifier
-# more info https://docs.drone.io/installation/github/single-machine
+# more info https://docs.drone.io/installation/github/multi-machine
 drone_github_client_id:
 # Github oauth application client secret
-# more info https://docs.drone.io/installation/github/single-machine/
+# more info https://docs.drone.io/installation/github/multi-machine
 drone_github_client_secret:
 # Boolean value configures Drone to authenticate when cloning public repositories
-# more info https://docs.drone.io/installation/github/single-machine/
+# more info https://docs.drone.io/installation/github/multi-machine
 drone_git_always_auth: false
 # A string containing your GitHub server address
 drone_github_server: https://github.com
@@ -48,9 +48,9 @@ drone_database_secret:
 
 # A password to postgress db used by drone
 drone_postgress_password: droneRocks23@p
-# A username to postgress db used by drone, read more: http://docs.drone.io/database-settings/
+# A username to postgress db used by drone, read more: https://docs.drone.io/install/server/storage/postgres/
 drone_postgress_user: drone
-# A name of to postgress db used by drone, read more: http://docs.drone.io/database-settings/
+# A name of to postgress db used by drone, read more: https://docs.drone.io/install/server/storage/postgres/
 drone_postgress_db: drone
 # a directory on a host machine, where postgresql data stored
 drone_postgress_data_dir: /drone-postgres-data
