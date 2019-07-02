@@ -16,5 +16,5 @@
       - name: "{{ drone_network_name }}"
   tags:
     - postgres
-  when: 
+  when:
     - ansible_drone_deploy_postgresql

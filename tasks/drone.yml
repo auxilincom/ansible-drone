@@ -19,18 +19,18 @@
         postgres:5432/{{ drone_postgress_db }}?sslmode=disable
       DRONE_DATABASE_DRIVER: postgres
       DRONE_DATABASE_SECRET: "{{ drone_database_secret }}"
-      
+
       DRONE_GITHUB_CLIENT_ID: "{{ drone_github_client_id }}"
       DRONE_GITHUB_CLIENT_SECRET: "{{ drone_github_client_secret }}"
       DRONE_GITHUB_SERVER: "{{ drone_github_server }}"
       DRONE_GITHUB_SKIP_VERIFY: "true"
-      
+
       DRONE_LOGS_DEBUG: "{{ drone_logs_debug }}"
       DRONE_LOGS_TRACE: "{{ drone_logs_trace }}"
-      
+
       DRONE_AGENTS_ENABLED: true
       DRONE_RPC_SECRET: "{{ drone_rpc_secret }}"
-      
+
       DRONE_SERVER_HOST: "{{ drone_server_host }}"
       DRONE_SERVER_PROTO: "{{ drone_server_proto }}"
 
@@ -43,7 +43,7 @@
   tags:
     - drone
     - server
-  when: 
+  when:
     - ansible_drone_deploy_server
 
 - name: run drone agent
@@ -68,5 +68,5 @@
   tags:
     - drone
     - agent
-  when: 
+  when:
     - ansible_drone_deploy_agents
