@@ -10,13 +10,13 @@
     volumes:
       - /drone:/var/lib/drone/
       - /var/run/docker.sock:/var/run/docker.sock
-    links:
-      - postgres
     env:
       DRONE_COOKIE_SECRET: "{{ drone_cookie_secret }}"
       DRONE_COOKIE_TIMEOUT: "{{ drone_cookie_timeout }}"
 
-      DRONE_DATABASE_DATASOURCE: postgres://{{ drone_postgress_user }}:{{ drone_postgress_password }}@postgres:5432/{{ drone_postgress_db }}?sslmode=disable
+      DRONE_DATABASE_DATASOURCE: >-
+        postgres://{{ drone_postgress_user }}:{{ drone_postgress_password }}@
+        postgres:5432/{{ drone_postgress_db }}?sslmode=disable
       DRONE_DATABASE_DRIVER: postgres
       DRONE_DATABASE_SECRET: "{{ drone_database_secret }}"
       
@@ -38,6 +38,8 @@
 
       DRONE_USER_CREATE: "{{ drone_user_create }}"
       DRONE_USER_FILTER: "{{ drone_user_filter }}"
+    networks:
+      - name: "{{ drone_network_name }}"
   tags:
     - drone
     - server
@@ -60,6 +62,8 @@
       DRONE_RPC_SERVER: "{{ drone_rpc_server }}"
       DRONE_RUNNER_CAPACITY: "{{ drone_runner_capacity }}"
       DRONE_RUNNER_NAME: "{{ item.name }}"
+    networks:
+      - name: "{{ drone_network_name }}"
   with_items: "{{ drone_runners }}"
   tags:
     - drone

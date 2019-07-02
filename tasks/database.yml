@@ -12,6 +12,8 @@
       POSTGRES_PASSWORD: "{{ drone_postgress_password }}"
       POSTGRES_USER: "{{ drone_postgress_user }}"
       POSTGRES_DB: "{{ drone_postgress_db }}"
+    networks:
+      - name: "{{ drone_network_name }}"
   tags:
     - postgres
   when: 

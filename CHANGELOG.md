@@ -1,3 +1,8 @@
+## v0.3.1 (2019-07-02)
+
+* Fix default value for database encryption
+* Add network for containers
+
 ## v0.3.0 (2019-06-23)
 
 * Update configuration to use the latest postgres and drone

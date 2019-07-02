@@ -44,7 +44,7 @@ drone_github_server: https://github.com
 
 # Drone supports aesgcm encryption of secrets stored in the database.
 # details https://docs.drone.io/administration/server/database/
-drone_database_secret:
+drone_database_secret: ""
 
 # A password to postgress db used by drone
 drone_postgress_password: droneRocks23@p
@@ -54,6 +54,8 @@ drone_postgress_user: drone
 drone_postgress_db: drone
 # a directory on a host machine, where postgresql data stored
 drone_postgress_data_dir: /drone-postgres-data
+
+drone_network_name: drone_isolated_network
 
 ansible_drone_deploy_agents: true
 ansible_drone_deploy_server: true
