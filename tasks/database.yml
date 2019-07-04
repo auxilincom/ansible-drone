@@ -17,4 +17,4 @@
   tags:
     - postgres
   when:
-    - ansible_drone_deploy_postgresql
+    - ansible_drone_deploy_postgresql|bool

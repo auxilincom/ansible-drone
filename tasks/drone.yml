@@ -44,7 +44,7 @@
     - drone
     - server
   when:
-    - ansible_drone_deploy_server
+    - ansible_drone_deploy_server|bool
 
 - name: run drone agent
   docker_container:
@@ -69,4 +69,4 @@
     - drone
     - agent
   when:
-    - ansible_drone_deploy_agents
+    - ansible_drone_deploy_agents|bool

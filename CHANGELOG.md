@@ -1,3 +1,7 @@
+## v0.3.3 (2019-07-04)
+
+* Fix Ansible deprecation warning
+
 ## v0.3.2 (2019-07-04)
 
 * Fix using docker network
