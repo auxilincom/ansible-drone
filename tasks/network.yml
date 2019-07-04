@@ -1,0 +1,3 @@
+- name: create drone networks
+  docker_network:
+    name: "{{ drone_network_name }}"
