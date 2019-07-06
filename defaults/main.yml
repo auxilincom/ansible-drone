@@ -13,7 +13,7 @@ drone_user_create:
 
 # Name of the docker agent container, you can add more than one agent
 drone_runners: [{name: "Nancy"}]
-drone_runner_capacity: 2
+drone_runner_capacity: "2"
 # Url to your instance with drone admin, e.x.: https://drone.org.com
 drone_rpc_server: 
 # Drone secret key, used for private communication between agent and web UI
@@ -28,7 +28,7 @@ drone_tls_autocert: "false"
 drone_logs_debug: "false"
 drone_logs_trace: "false"
 drone_cookie_secret: ""
-drone_cookie_timeout: 72h
+drone_cookie_timeout: "72h"
 
 # Github oauth application client identifier
 # more info https://docs.drone.io/installation/github/multi-machine
@@ -46,6 +46,8 @@ drone_github_server: https://github.com
 # details https://docs.drone.io/administration/server/database/
 drone_database_secret: ""
 
+# Version of Postgres, see other versions here: https://hub.docker.com/_/postgres?tab=tags
+drone_postgres_version: "11.3"
 # A password to postgress db used by drone
 drone_postgress_password: droneRocks23@p
 # A username to postgress db used by drone, read more: https://docs.drone.io/install/server/storage/postgres/

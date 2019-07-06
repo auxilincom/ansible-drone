@@ -1,3 +1,7 @@
+## v0.4.0 (2019-07-06)
+
+* Add ability to set database version
+
 ## v0.3.4 (2019-07-06)
 
 * Replace boolean variables with corresponding strings
