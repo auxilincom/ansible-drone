@@ -31,14 +31,14 @@ Available variables:
 |**`drone_rpc_secret`**|`hTirsXmrY4YsyK79ELgB`|Required string literal value provides the drone shared secret. This is used to authenticate the rpc connection to the server. The server and agent must be provided the same secret value, [more info](https://docs.drone.io/reference/server/drone-rpc-secret)|
 |**`drone_server_host`**|`""`|Required string literal value specifies the Drone server hostname. Example: ci.auxilin.com|
 |**`drone_server_proto`**|`http`|Required string literal value specifies the Drone server protocol.|
-|**`drone_tls_autocert`**|`false`|Automatically generates an SSL certificate using Lets Encrypt, and configures the server to accept HTTPS requests.|
-|**`drone_logs_debug`**|`false`|Enable debug-level logging.|
-|**`drone_logs_trace`**|`false`|Enable trace logs.|
+|**`drone_tls_autocert`**|`"false"`|Automatically generates an SSL certificate using Lets Encrypt, and configures the server to accept HTTPS requests.|
+|**`drone_logs_debug`**|`"false"`|Enable debug-level logging.|
+|**`drone_logs_trace`**|`"false"`|Enable trace logs.|
 |**`drone_cookie_secret`**|`""`|A secret key used to sign authentication cookies. This value is optional. If unset, a random value is generated each time the server is started.|
 |**`drone_cookie_timeout`**|`72h`|Duration value sets the authentication cookie expiration.|
 |**`drone_github_client_id`**|`""`|Github oauth application client identifier, [more info](https://docs.drone.io/installation/github/multi-machine)|
 |**`drone_github_secret`**|`""`|Github oauth application client secret, [more info](https://docs.drone.io/installation/github/multi-machine)|
-|**`drone_git_always_auth`**|`false`|Boolean value configures Drone to authenticate when cloning public repositories. This is only required when your source code management system (e.g. GitHub Enterprise) has private mode enabled.|
+|**`drone_git_always_auth`**|`"false"`|Boolean value configures Drone to authenticate when cloning public repositories. This is only required when your source code management system (e.g. GitHub Enterprise) has private mode enabled.|
 |**`drone_github_server`**|`https://github.com`|String literal value provides the github server address.|
 |**`drone_database_secret`**|`""`|Drone supports aesgcm encryption of secrets stored in the database. You must enable encryption before any secrets are stored in the database, [read more](https://docs.drone.io/install/server/storage/encryption)|
 |**`drone_postgress_password`**|`droneRocks23@p`|A password to postgress db used by drone|

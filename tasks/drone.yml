@@ -28,7 +28,7 @@
       DRONE_LOGS_DEBUG: "{{ drone_logs_debug }}"
       DRONE_LOGS_TRACE: "{{ drone_logs_trace }}"
 
-      DRONE_AGENTS_ENABLED: true
+      DRONE_AGENTS_ENABLED: "true"
       DRONE_RPC_SECRET: "{{ drone_rpc_secret }}"
 
       DRONE_SERVER_HOST: "{{ drone_server_host }}"

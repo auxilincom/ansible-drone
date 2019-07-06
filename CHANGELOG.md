@@ -1,3 +1,7 @@
+## v0.3.4 (2019-07-06)
+
+* Replace boolean variables with corresponding strings
+
 ## v0.3.3 (2019-07-04)
 
 * Fix Ansible deprecation warning

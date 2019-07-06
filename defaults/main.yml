@@ -24,9 +24,9 @@ drone_rpc_secret: hTirsXmrY4YsyK79ELgB
 # typically you would have nginx in front of Drone CI
 drone_server_host: ""
 drone_server_proto: "http"
-drone_tls_autocert: false
-drone_logs_debug: false
-drone_logs_trace: false
+drone_tls_autocert: "false"
+drone_logs_debug: "false"
+drone_logs_trace: "false"
 drone_cookie_secret: ""
 drone_cookie_timeout: 72h
 
@@ -38,7 +38,7 @@ drone_github_client_id:
 drone_github_client_secret:
 # Boolean value configures Drone to authenticate when cloning public repositories
 # more info https://docs.drone.io/installation/github/multi-machine
-drone_git_always_auth: false
+drone_git_always_auth: "false"
 # A string containing your GitHub server address
 drone_github_server: https://github.com
 
