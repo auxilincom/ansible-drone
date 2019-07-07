@@ -48,6 +48,11 @@ drone_database_secret: ""
 
 # Version of Postgres, see other versions here: https://hub.docker.com/_/postgres?tab=tags
 drone_postgres_version: "11.3"
+# Postgres host
+drone_postgres_host: localhost
+# Postgres port
+drone_postgres_port: 5432
+
 # A password to postgress db used by drone
 drone_postgress_password: droneRocks23@p
 # A username to postgress db used by drone, read more: https://docs.drone.io/install/server/storage/postgres/

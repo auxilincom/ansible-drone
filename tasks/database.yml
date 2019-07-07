@@ -11,10 +11,29 @@
     env:
       POSTGRES_PASSWORD: "{{ drone_postgress_password }}"
       POSTGRES_USER: "{{ drone_postgress_user }}"
-      POSTGRES_DB: "{{ drone_postgress_db }}"
     networks:
       - name: "{{ drone_network_name }}"
   tags:
     - postgres
+  when:
+    - ansible_drone_deploy_postgresql|bool
+
+- name: Make sure psycopg2 is installed
+  become: yes
+  apt:
+    name:
+      - python3-psycopg2
+      - python-psycopg2
+    state: latest
+  when:
+    - ansible_drone_deploy_postgresql|bool
+
+- name: create postgres database
+  postgresql_db:
+    login_host: "{{ drone_postgres_host }}"
+    login_password: "{{ drone_postgress_password }}"
+    login_user: "{{ drone_postgress_user }}"
+    name: "{{ drone_postgress_db }}"
+    port: "{{ drone_postgres_port }}"
   when:
     - ansible_drone_deploy_postgresql|bool

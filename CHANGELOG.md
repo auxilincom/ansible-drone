@@ -1,3 +1,7 @@
+## v0.4.1 (2019-07-07)
+
+* Add task for creation postgres database
+
 ## v0.4.0 (2019-07-06)
 
 * Add ability to set database version
